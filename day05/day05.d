@@ -30,7 +30,7 @@ int seat_id(string pass)
 void main()
 {
     import std.algorithm.comparison : max;
-    import std.algorithm : canFind;
+    import std.algorithm.sorting : sort;
     import std.file : readText;
     import std.string : strip;
     import std.array : array;
@@ -45,10 +45,15 @@ void main()
     int mx = passes.reduce!((acc, id) => max(acc, id));
     writeln("Max = ", mx);
 
-    foreach (i; 1 .. 128*8-1) {
-        if (!passes.canFind(i) && passes.canFind(i-1) && passes.canFind(i+1)) {
-            writeln("Missing seat = ", i);
+    passes.sort!((a, b) => a < b);
+    int last = passes[0];
+    foreach (_, n; passes) {
+        if (n - last == 2) {
+            writeln("Missing seat = ", last + 1);
+            break;
         }
+        
+        last = n;
     }
 }
 
