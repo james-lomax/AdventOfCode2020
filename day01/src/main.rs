@@ -1,3 +1,5 @@
+use itertools::Itertools;
+
 fn main() {
     let contents = std::fs::read_to_string("input.txt").expect("Couldn't read file");
 
@@ -7,14 +9,15 @@ fn main() {
             .map(|s| s.parse::<i32>().unwrap())
             .collect();
     
-    for x in &nums {
-        for y in &nums {
-            for z in &nums {
-                if x + y + z == 2020 {
-                    println!("{}", x*y*z);
-                    return;
-                }
-            }
-        }
-    }
+    let p1: Vec<i32> = nums.iter().combinations(3)
+        .filter(|v| v[0] + v[1] == 2020)
+        .map(|v| v[0] * v[1])
+        .collect();
+    println!("Part 1 = {:?}", p1);
+
+    let p2: Vec<i32> = nums.iter().combinations(3)
+        .filter(|v| v[0] + v[1] + v[2] == 2020)
+        .map(|v| v[0] * v[1] * v[2])
+        .collect();
+    println!("Part 2 = {:?}", p2);
 }
