@@ -12,24 +12,20 @@ fn parse_bag_rules(contents: &str) -> HashMap<String, Vec<BagCount>> {
     let bag_pattern = Regex::new(bag_pattern).expect("Pattern compile failed");
 
     rule_pattern.captures_iter(contents)
-        .map(|c| {
-            (
-                c.get(1).expect("Matches should have capture group 1").as_str().to_string(),
-                bag_pattern.captures_iter(c.get(2).expect("Matches should have capture group 2").as_str())
-                    .map(|c| {
-                        BagCount(
-                            c.get(1)
-                                .expect("Matches of bag pattern should have capture group 1")
-                                .as_str()
-                                .parse::<usize>().expect("Capture matching [0-9]+ should parse..."),
-                            c.get(2)
-                                .expect("Matches of bag pattern should have capture group 2")
-                                .as_str()
-                                .to_string()
-                        )
-                    }).collect()
-            )
-        }).collect()
+        .map(|c| (
+            c.get(1).expect("Matches should have capture group 1").as_str().to_string(),
+            bag_pattern.captures_iter(c.get(2).expect("Matches should have capture group 2").as_str())
+                .map(|c| BagCount(
+                    c.get(1)
+                        .expect("Matches of bag pattern should have capture group 1")
+                        .as_str()
+                        .parse::<usize>().expect("Capture matching [0-9]+ should parse..."),
+                    c.get(2)
+                        .expect("Matches of bag pattern should have capture group 2")
+                        .as_str()
+                        .to_string()
+                )).collect()
+        )).collect()
 }
 
 fn count_can_contain(bag_rules: &HashMap<String, Vec<BagCount>>, origin: String) -> usize {
