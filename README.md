@@ -4,7 +4,7 @@
 |-----|-------------|-------|
 |   1 | Rust        | Combinations |
 |   2 | JavaScript  | Counting |
-|   3 | JavaScript  | Map |
+|   3 | JavaScript  | 2D grid |
 |   4 | Python      | Boring rules |
 |   5 | D           | Binary search |
 |   6 | D           | Sets |
