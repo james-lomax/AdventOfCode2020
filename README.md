@@ -9,3 +9,4 @@
 |   5 | D           | Binary search |
 |   6 | D           | Sets |
 |   7 | Rust        | Tree traversal |
+|   8 | C++         | Virtual Machine |
