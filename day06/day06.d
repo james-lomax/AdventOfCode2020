@@ -4,18 +4,19 @@ import std.algorithm;
 import std.array;
 import std.string;
 import std.file;
+import std.utf : byCodeUnit;
 
 // THis whole thing would be easier with sets... Why doesnt D have a standard set container?
 
 char[] set_union(char[] a, char[] b)
 {
-    // Wtf D... Why is filter arbitrarily convert my data type char to dchar?
-    return a ~ b.filter!(c => !a.canFind(c)).map!(x => cast(char)x).array();
+    // Autodecoding... Sucks. https://jackstouffer.com/blog/d_auto_decoding_and_you.html
+    return a ~ b.byCodeUnit.filter!(c => !a.canFind(c)).array();
 }
 
 char[] set_intersection(char[] a, char[] b)
 {
-    return a.filter!(c => b.canFind(c)).map!(x => cast(char)x).array();
+    return a.byCodeUnit.filter!(c => b.canFind(c)).array();
 }
 
 /// Split the file into groups of people, in turn each being a group of characters
