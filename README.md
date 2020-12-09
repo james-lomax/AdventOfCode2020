@@ -10,3 +10,4 @@
 |   6 | D           | Sets |
 |   7 | Rust        | Tree traversal |
 |   8 | C++         | Virtual Machine |
+|   9 | C++         | Churn the numbers |
