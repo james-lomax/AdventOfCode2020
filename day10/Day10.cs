@@ -47,27 +47,22 @@ class Day10
         // The idea is essentially to build a tree from the BuiltInRating to 0 and count the number of ways to get there
         var reach = nums.ToDictionary(x => x, x => (ulong)0);
 
-        var toVisit = new SortedSet<ulong>();
         var builtin = BuiltInRating(nums);
-        toVisit.Add(builtin);
+        nums.Add(builtin);
         reach[builtin] = 1;
 
-        while (toVisit.Count > 0)
+        // Work down from the largest (built in charger)
+        for (var i = nums.Count - 1; i >= 0; i--)
         {
-            var visiting = toVisit.Max;
-            toVisit.Remove(visiting);
-
+            var visiting = nums[i];
             var rch = reach[visiting];
 
-            foreach (var n in nums)
+            // Check the next highest rated chargers
+            for (var j = i-1; j >= 0 && nums[j] + 3 >= visiting; j--)
             {
-                var diff = visiting - n;
-                if (diff >= 1 && diff <= 3)
-                {
-                    // We can reach `n` from `visiting`
-                    reach[n] += rch;
-                    toVisit.Add(n);
-                }
+                var n = nums[j];
+                Debug.Assert(n < visiting); // Fails if the list had repeated nums
+                reach[n] += rch;
             }
         }
 
