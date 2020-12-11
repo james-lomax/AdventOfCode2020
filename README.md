@@ -12,3 +12,4 @@
 |   8 | C++         | Virtual Machine |
 |   9 | C++         | Churn the numbers |
 |  10 | C#          | Combinatorial |
+|  11 | C#          | Rules and 2D grids |
