@@ -13,3 +13,5 @@
 |   9 | C++         | Churn the numbers |
 |  10 | C#          | Combinatorial |
 |  11 | C#          | Rules and 2D grids |
+|  12 | Go          | Manhatten ships |
+ 
