@@ -15,3 +15,33 @@
 |  11 | C#          | Rules and 2D grids |
 |  12 | Go          | Manhatten ships |
 |  13 | C           | Mod arithmetic |
+|  14 | C++         | Bit manipulation |
+
+
+## Building C++ projects (with conan+CMake)
+
+Use conan for easy boost installation. See [conan 'getting started'](https://docs.conan.io/en/latest/getting_started.html).
+
+Having just installed conan, you will need to run:
+
+ conan profile new default --detect
+
+To build a C++ day:
+
+```
+cd dayXX
+mkdir build && cd build
+conan install .. [-s build_type=Debug]
+cmake ..
+cmake --build .
+./dayXX
+```
+
+Using visual studio, generate once, then configure conan libs with something like:
+
+```
+cd out/build/x64-Debug
+conan install ../../../ -s build_type=Debug
+```
+
+Regenerate CMake in IDE and away!
