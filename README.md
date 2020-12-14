@@ -24,7 +24,9 @@ Use conan for easy boost installation. See [conan 'getting started'](https://doc
 
 Having just installed conan, you will need to run:
 
- conan profile new default --detect
+```
+conan profile new default --detect
+```
 
 To build a C++ day:
 
