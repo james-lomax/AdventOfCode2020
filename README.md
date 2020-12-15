@@ -16,6 +16,7 @@
 |  12 | Go          | Manhatten ships |
 |  13 | C           | Mod arithmetic |
 |  14 | C++         | Bit manipulation |
+|  15 | C++         | Memory game |
 
 
 ## Building C++ projects (with conan+CMake)
