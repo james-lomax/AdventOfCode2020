@@ -17,7 +17,7 @@
 |  13 | C           | Mod arithmetic |
 |  14 | C++         | Bit manipulation |
 |  15 | C++         | Memory game |
-
+|  16 | C#          | Rules and deduction |
 
 ## Building C++ projects (with conan+CMake)
 
