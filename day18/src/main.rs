@@ -1,4 +1,5 @@
 use regex::Regex;
+use itertools::Itertools;
 
 #[derive(Debug)]
 enum Token {
@@ -44,18 +45,12 @@ fn eval_term(token: &Token) -> i64 {
 }
 
 fn eval_expr(tokens: &Vec<Token>) -> i64 {
-    assert!(tokens.len() > 0);
+    let mut acc = eval_term(tokens.first().expect("Must evaluate at least 1 token"));
 
-    let mut acc = eval_term(&tokens[0]);
-
-    for i in (1..tokens.len()).step_by(2) {
-        assert!(i + 1 < tokens.len());
-
-        let next = eval_term(&tokens[i+1]);
-
-        acc = match tokens[i] {
-            Token::Add => acc + next,
-            Token::Mul => acc * next,
+    for (op, next_t) in tokens.iter().skip(1).tuples() {
+        acc = match op {
+            Token::Add => acc + eval_term(next_t),
+            Token::Mul => acc * eval_term(next_t),
             _ => panic!("Expected operator")
         }
     }
@@ -80,22 +75,17 @@ fn reduce_add_term(token: &Token) -> i64 {
 // Reduce additions first and then perform normal evaluation
 fn reduce_additions(tokens: &Vec<Token>) -> i64 {
     let mut out = Vec::new();
+    let mut acc = reduce_add_term(tokens.first().expect("Must evaluate at least 1 token"));
 
-    assert!(tokens.len() > 0);
-
-    let mut acc = reduce_add_term(&tokens[0]);
-
-    for i in (1..tokens.len()).step_by(2) {
-        assert!(i + 1 < tokens.len());
-
-        match tokens[i] {
+    for (op, next_t) in tokens.iter().skip(1).tuples() {
+        match op {
             Token::Mul => {
                 out.push(Token::Number(acc));
                 out.push(Token::Mul);
-                acc = reduce_add_term(&tokens[i+1]);
+                acc = reduce_add_term(next_t);
             }
             Token::Add => {
-                acc += reduce_add_term(&tokens[i+1]);
+                acc += reduce_add_term(next_t);
             }
             _ => panic!("Expected operator!")
         }
