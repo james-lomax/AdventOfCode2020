@@ -20,6 +20,7 @@
 |  16 | C#          | Rules and deduction |
 |  17 | C++         | Conways Game (3/4D) |
 |  18 | Rust        | Parsing/Evaluation |
+|  19 | Rust        | Grammars |
 
 ## Building C++ projects (with conan+CMake)
 
