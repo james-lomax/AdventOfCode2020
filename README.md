@@ -21,6 +21,7 @@
 |  17 | C++         | Conways Game (3/4D) |
 |  18 | Rust        | Parsing/Evaluation |
 |  19 | Rust        | Grammars |
+|  20 | Rust        | Patterns (nails) |
 
 ## Building C++ projects (with conan+CMake)
 
