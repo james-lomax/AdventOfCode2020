@@ -30,7 +30,7 @@ def proc(items):
     # First enumerate all possibilities for each allergen
     al_possible = {allergen: possible(allergen, items) for allergen in all_allergens}
 
-    accounted_for = reduce(set.union, [v for v in al_possible.values()])
+    accounted_for = reduce(set.union, list(al_possible.values()))
     unaccounted = all_ingredients.difference(accounted_for)
 
     count_unacc = len([x for i in items for x in i[0] if x in unaccounted])
