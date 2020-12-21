@@ -22,6 +22,7 @@
 |  18 | Rust        | Parsing/Evaluation |
 |  19 | Rust        | Grammars |
 |  20 | Rust        | Patterns (nails) |
+|  21 | Python      | Sets |
 
 ## Building C++ projects (with conan+CMake)
 
