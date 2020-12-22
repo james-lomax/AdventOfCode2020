@@ -23,6 +23,7 @@
 |  19 | Rust        | Grammars |
 |  20 | Rust        | Patterns (nails) |
 |  21 | Python      | Sets |
+|  22 | C++         | Games with convoluted rules |
 
 ## Building C++ projects (with conan+CMake)
 

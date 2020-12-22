@@ -253,7 +253,7 @@ void main()
     test();
 
     string contents;
-    boost::filesystem::load_string_file("../../../../input.txt", contents);
+    boost::filesystem::load_string_file("input.txt", contents);
 
     deque<int> deck_1, deck_2;
     parse(contents, deck_1, deck_2);
