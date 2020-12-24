@@ -24,6 +24,7 @@
 |  20 | Rust        | Patterns (nails) |
 |  21 | Python      | Sets |
 |  22 | C++         | Games with convoluted rules |
+|  23 | JavaScript  | ??? Part 1 only so far |
 
 ## Building C++ projects (with conan+CMake)
 
