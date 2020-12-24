@@ -12,7 +12,7 @@
 |   8 | C++         | Virtual Machine |
 |   9 | C++         | Churn the numbers |
 |  10 | C#          | Combinatorial |
-|  11 | C#          | Rules and 2D grids |
+|  11 | C#, NumPy   | Rules and 2D grids |
 |  12 | Go          | Manhatten ships |
 |  13 | C           | Mod arithmetic |
 |  14 | C++         | Bit manipulation |
