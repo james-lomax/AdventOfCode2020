@@ -25,6 +25,7 @@
 |  21 | Python      | Sets |
 |  22 | C++         | Games with convoluted rules |
 |  23 | JavaScript  | ??? Part 1 only so far |
+|  24 | Rust        | Conways hex GoL |
 
 ## Building C++ projects (with conan+CMake)
 
