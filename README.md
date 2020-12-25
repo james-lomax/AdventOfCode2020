@@ -26,6 +26,7 @@
 |  22 | C++         | Games with convoluted rules |
 |  23 | JavaScript  | ??? Part 1 only so far |
 |  24 | Rust        | Conways hex GoL |
+|  25 | Python      | Easy guesswork |
 
 ## Building C++ projects (with conan+CMake)
 
