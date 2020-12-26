@@ -24,7 +24,7 @@
 |  20 | Rust        | Patterns (nails) |
 |  21 | Python      | Sets |
 |  22 | C++         | Games with convoluted rules |
-|  23 | JavaScript  | ??? Part 1 only so far |
+|  23 | JavaScript  | Linked List |
 |  24 | Rust        | Conways hex GoL |
 |  25 | Python      | Easy guesswork |
 
