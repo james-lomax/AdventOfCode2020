@@ -1,4 +1,5 @@
 import numpy as np
+import scipy.signal
 
 # contents = """L.LL.LL.LL
 # LLLLLLL.LL
@@ -15,27 +16,16 @@ with open('input.txt') as infile:
     contents = infile.read()
 seats = np.array([[x == "L" for x in row] for row in contents.splitlines()])
 
-# Expand space for roll
-col = np.array([False]*seats.shape[0])
-seats = np.column_stack((col, seats, col))
-row = np.array([False]*seats.shape[1])
-seats = np.row_stack((row, seats, row))
-
 occup = np.full(seats.shape, False)
 
-def offsets(seats):
-    left = np.roll(seats, -1, 1)
-    right = np.roll(seats, 1, 1)
-    for i in [-1, 0, 1]:
-        yield np.roll(left, i, 0)
-        yield np.roll(right, i, 0)
-        if i != 0:
-            yield np.roll(seats, i, 0)
+kernel = np.array([
+    [1, 1, 1],
+    [1, 0, 1],
+    [1, 1, 1]
+])
 
 def step(occup):
-    count = np.full(seats.shape, 0)
-    for off in offsets(occup):
-        count += off + 0
+    count = scipy.signal.convolve2d(occup, kernel)[1:-1, 1:-1]
 
     empties = np.logical_and(seats, np.logical_not(occup))
     # Rule 1, occupy empty seats with no surrounds
